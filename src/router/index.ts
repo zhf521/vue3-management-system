@@ -2,12 +2,29 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import NotFound from '../views/NotFound.vue'
-
+import Dashboard from '../views/Dashboard.vue'
 const routes = [
+  // 重定向
+  {
+    path: '/',
+    redirect:'/dashboard'
+  },
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Home,
+    //嵌套路由
+    children: [
+      {
+        path: '/dashboard',
+        name: 'dashboard',
+        meta: {
+          icon: 'Menu',
+          name:'系统首页'
+        },
+        component:Dashboard
+      }
+    ]
   },
   {
     path: '/login',
