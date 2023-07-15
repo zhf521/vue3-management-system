@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import NotFound from '../views/NotFound.vue'
 import Dashboard from '../views/Dashboard.vue'
+import ComplexTable from '../views/ComplexTable.vue'
 const routes = [
   // 重定向
   {
@@ -23,6 +24,11 @@ const routes = [
           name:'系统首页'
         },
         component:Dashboard
+      },
+      {
+        path: '/complex-table',
+        name: 'ComplexTable',
+        component:ComplexTable
       }
     ]
   },
