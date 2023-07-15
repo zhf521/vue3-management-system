@@ -6,51 +6,158 @@
       <div class="change-btn">
         <img src="../assets/管理者1.svg" width="355">
         <p>已经有账号了？</p>
-        <el-button size="large">登录</el-button>
+        <el-button size="large" @click="show = ShowCase.login">登录</el-button>
       </div>
       <div class="change-btn">
         <img src="../assets/管理者2.svg" width="355">
         <p>还没有账号？</p>
-        <el-button size="large">注册</el-button>
+        <el-button size="large" @click="show = ShowCase.register">注册</el-button>
       </div>
-      <div class="wrapper">
-        <el-form label-width="80px">
+      <div class="wrapper" :class="{ move: show === ShowCase.register }">
+        <!-- 登录页面 -->
+        <el-form v-show="show === ShowCase.login" ref="loginFormRef" :model="loginForm" :rules="loginRules"
+          label-width="80px" status-icon>
           <h3 class="header">登 录</h3>
-          <el-form-item label="账号">
-            <el-input placeholder="请输入账号"></el-input>
+          <el-form-item label="账号" prop="name">
+            <el-input placeholder="请输入账号" v-model="loginForm.name"></el-input>
           </el-form-item>
-          <el-form-item label="密码">
-            <el-input placeholder="请输入密码"></el-input>
+          <el-form-item label="密码" prop="password">
+            <el-input placeholder="请输入密码" v-model="loginForm.password"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary">登录</el-button>
-            <el-button>重置</el-button>
+            <el-button type="primary" @click="submit(loginFormRef)">登录</el-button>
+            <el-button @click="resetForm(loginFormRef)">重置</el-button>
           </el-form-item>
         </el-form>
-        <el-form label-width="100px">
+        <!-- 注册页面 -->
+        <el-form v-show="show === ShowCase.register" ref="registerFormRef" :model="registerForm" :rules="registerRules"
+          label-width="100px" status-icon>
           <h3 class="header">注 册</h3>
-          <el-form-item label="账号">
-            <el-input placeholder="请输入账号"></el-input>
+          <el-form-item label="账号" prop="name">
+            <el-input placeholder="输入账号" v-model="registerForm.name" />
           </el-form-item>
-          <el-form-item label="邮箱">
-            <el-input placeholder="请输入邮箱"></el-input>
+          <el-form-item label="邮箱" prop="email">
+            <el-input placeholder="输入邮箱" v-model="registerForm.email" />
           </el-form-item>
-          <el-form-item label="密码">
-            <el-input placeholder="请输入密码"></el-input>
+          <el-form-item label="密码" prop="password">
+            <el-input type="password" placeholder="输入密码" v-model="registerForm.password" />
           </el-form-item>
-          <el-form-item label="再次确认">
-            <el-input placeholder="请再次输入密码"></el-input>
+          <el-form-item label="确认密码" prop="checkPassWord">
+            <el-input type="password" placeholder="再次输入密码" v-model="registerForm.checkPassWord" />
           </el-form-item>
           <el-form-item>
-            <el-button type="primary">注册</el-button>
-            <el-button>重置</el-button>
+            <el-button type="primary" @click="submit(registerFormRef)">注 册</el-button>
+            <el-button @click="resetForm(registerFormRef)">重 置</el-button>
           </el-form-item>
         </el-form>
       </div>
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
+import { reactive, ref } from 'vue'
+import type { FormInstance, FormRules } from 'element-plus'
+import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
+
+enum ShowCase {
+  'login',
+  'register',
+}
+const router = useRouter()
+const show = ref<ShowCase>(ShowCase.login)
+
+//登录模块开始
+const loginFormRef = ref<FormInstance>()
+const loginForm = reactive({
+  name: '',
+  password: '',
+})
+const loginRules = reactive<FormRules>({
+  name: [
+    { required: true, message: '请输入账号', trigger: 'blur' },
+    { max: 11, message: '账号长度不超过11位', trigger: 'blur' },
+  ],
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+})
+const resetForm = (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  formEl.resetFields()
+}
+const submit = async (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  await formEl.validate((valid, fields) => {
+    if (valid) {
+      // 获取token
+      const token = 'IrARveFpnY7IXu8YAv0XQdowc7i1lPtO'
+      ElMessage({
+        message: '登录成功 ~',
+        type: 'success'
+      })
+      sessionStorage.setItem('token', token)
+      localStorage.setItem('username', loginForm.name)
+      router.push('/')
+    } else {
+      console.log('error submit!', fields)
+    }
+  })
+}
+//登录模块结束
+
+//注册模块开始
+const registerFormRef = ref<FormInstance>()
+const registerForm = reactive({
+  name: '',
+  email: '',
+  password: '',
+  checkPassWord: '',
+})
+
+const validatePass = (rule: any, value: any, callback: any) => {
+  if (value === '') {
+    callback(new Error('请输入密码'))
+  } else {
+    if (registerForm.checkPassWord !== '') {
+      if (!registerFormRef.value) return
+      registerFormRef.value.validateField('checkPass', () => null)
+    }
+    callback()
+  }
+}
+const validatePass2 = (rule: any, value: any, callback: any) => {
+  if (value === '') {
+    callback(new Error('Please input the password again'))
+  } else if (value !== registerForm.password) {
+    callback(new Error("两次输入的密码不一致！"))
+  } else {
+    callback()
+  }
+}
+
+const registerRules = reactive<FormRules>({
+  name: [
+    { required: true, message: '请输入账号', trigger: 'blur' },
+    { max: 11, message: '账号长度不超过11位', trigger: 'blur' },
+  ],
+  email: [
+    { required: true, message: '请输入邮箱', trigger: 'blur' },
+    {
+      type: 'email',
+      message: '请输入正确的邮箱',
+      trigger: ['blur', 'change'],
+    },
+  ],
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { validator: validatePass, trigger: 'blur' }
+  ],
+  checkPassWord: [
+    { required: true, message: '请再次输入密码', trigger: 'blur' },
+    { validator: validatePass2, trigger: 'blur' }
+  ]
+})
+
+//注册模块结束
 
 </script>
 <style scoped lang="scss">
