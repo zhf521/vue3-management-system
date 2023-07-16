@@ -1,4 +1,3 @@
-<!--  -->
 <template>
   <div>
     <div class="statistic-card">
@@ -6,7 +5,7 @@
         <template #title>
           <div style="display: inline-flex; align-items: center">
             每日活跃人数
-            <el-tooltip effect="dark" content="一天内登录产品的用户数" placement="top">
+            <el-tooltip effect="dark" content="一天内登录的用户数" placement="top">
               <el-icon style="margin-left: 4px" :size="12">
                 <Warning />
               </el-icon>
@@ -32,7 +31,7 @@
         <template #title>
           <div style="display: inline-flex; align-items: center">
             每月活跃人数
-            <el-tooltip effect="dark" content="一个月内登录产品的用户数" placement="top">
+            <el-tooltip effect="dark" content="一个月内登录的用户数" placement="top">
               <el-icon style="margin-left: 4px" :size="12">
                 <Warning />
               </el-icon>

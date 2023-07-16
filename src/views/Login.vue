@@ -59,7 +59,6 @@ import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import { get } from '../api/index'
 
 enum ShowCase {
   'login',
@@ -89,26 +88,18 @@ const submit = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
-      // 获取token
-      let token: string = ''
-      get('api/login').then((res: any) => {
-        const { code, data, msg } = res
-        token = data.token as string
-        if (code == 200) {
-          ElMessage({
-            message: '登录成功 ~',
-            type: 'success'
-          })
-          sessionStorage.setItem('token', token)
-          localStorage.setItem('username', loginForm.name)
-          router.push('/')
-        } else {
-          console.log('error submit!')
-          return false
-        }
-      })
+      //todo 获取token
+      const token = 'IrARveFpnY7IXu8YAv0XQdowc7i1lPtO';
+      ElMessage({
+        message: '登录成功 ~',
+        type: 'success',
+      });
+      sessionStorage.setItem('token', token);
+      localStorage.setItem('username', loginForm.name);
+      router.push('/');
     } else {
-      console.log('error submit!', fields)
+      console.log('error submit!');
+      return false;
     }
   })
 }

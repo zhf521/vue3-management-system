@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type {AxiosInstance,AxiosError,AxiosResponseInternal,AxiosRequestConfig,
+import type {AxiosInstance,AxiosError,AxiosResponse,InternalAxiosRequestConfig,
 } from 'axios'
 
 // 定义请求相应参数，不含data
