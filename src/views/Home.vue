@@ -1,5 +1,5 @@
 <template>
-  <div class="fillContain">
+  <div class="fillcontain">
     <div class="header">
       <div class="logo">管理系统</div>
       <div class="right">
@@ -18,13 +18,18 @@
         </el-dropdown>
       </div>
     </div>
-    <el-container class="fillContain">
+    <el-container class="fillcontain">
       <!-- 侧边显示 -->
       <el-aside class="aside">
         <el-button @click="router.push('/dashboard')">首页</el-button>
       </el-aside>
       <!-- 主显示 -->
       <el-main>
+        <!-- 面包屑 -->
+        <el-breadcrumb separator="/">
+          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: breadcrumb.path }">{{ breadcrumb.title }}</el-breadcrumb-item>
+        </el-breadcrumb>
         <router-view v-slot="{ Component }">
           <keep-alive>
             <component :is="Component"></component>
@@ -37,13 +42,23 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 const router = useRouter()
+const route = useRouter()
 const username = localStorage.getItem('username')
 const handleCommand = (command: string) => {
   if (command == 'loginOut')
     localStorage.removeItem('username')
   sessionStorage.removeItem('token')
   router.push('/login')
-} 
+}
+
+// 面包屑
+const breadcrumb = computed(() => {
+  return {
+    name: route.name,
+    title: route.meta.name || route.meta.title,
+    path: route.fullPath
+  }
+})
 </script>
 <style scoped lang="scss">
 .header {
@@ -67,7 +82,7 @@ const handleCommand = (command: string) => {
 }
 
 .aside {
-  width: 200px;
+  width: 80px;
   height: 100%;
 }
 

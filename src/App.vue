@@ -1,8 +1,11 @@
-<script setup>
-import { RouterView } from 'vue-router'
+<script setup lang="ts">
+import { RouterView } from 'vue-router';
 </script>
+
 <template>
   <div id="app">
-    <router-view></router-view>
+    <RouterView />
   </div>
 </template>
+
+<style scoped lang="scss"></style>

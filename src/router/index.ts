@@ -4,7 +4,7 @@ import Login from '../views/Login.vue'
 import NotFound from '../views/NotFound.vue'
 import Dashboard from '../views/Dashboard.vue'
 import ComplexTable from '../views/ComplexTable.vue'
-import Table from '../views/Table.vue'
+
 const routes = [
   // 重定向
   {
@@ -47,16 +47,6 @@ const routes = [
     name: 'not-found',
     component: NotFound
   },
-  {
-    path: '/table',
-    name: 'table',
-    meta: {
-      title: '表格',
-      name: '简单表格',
-      icon:'List',
-    },
-    component:Table
-  }
 ]
 
 const router = createRouter({
