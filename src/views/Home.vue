@@ -26,7 +26,7 @@
       <!-- 主显示 -->
       <el-main>
         <!-- 面包屑 -->
-        <el-breadcrumb separator="/">
+        <el-breadcrumb style="margin-bottom: 20px;" separator="/">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item :to="{ path: breadcrumb.path }">{{ breadcrumb.title }}</el-breadcrumb-item>
         </el-breadcrumb>
