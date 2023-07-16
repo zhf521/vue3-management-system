@@ -41,9 +41,9 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, RouterView, useRoute } from 'vue-router'
 const router = useRouter()
-const route = useRouter()
+const route = useRoute()
 const username = localStorage.getItem('username')
 const handleCommand = (command: string) => {
   if (command == 'loginOut')
