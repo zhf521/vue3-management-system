@@ -6,13 +6,14 @@
         <!-- 用户名下拉菜单 -->
         <el-dropdown trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
-            <el-avatar icon="UserFilled" style="padding:8px"></el-avatar><span class="name">{{ username }}</span>
+            <img src="../assets/user.svg" alt="">
+            <span class="name">{{ username }}</span>
             <el-icon><arrow-down /></el-icon>
           </span>
           <template #dropdown>
             <el-dropdown-menu>
+              <el-dropdown-item command="user">个人中心</el-dropdown-item>
               <el-dropdown-item command="loginOut">退出登录</el-dropdown-item>
-              <!-- todo 个人中心等 -->
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -46,10 +47,13 @@ const router = useRouter()
 const route = useRoute()
 const username = localStorage.getItem('username')
 const handleCommand = (command: string) => {
-  if (command == 'loginOut')
+  if (command == 'loginOut') {
     localStorage.removeItem('username')
-  sessionStorage.removeItem('token')
-  router.push('/login')
+    sessionStorage.removeItem('token')
+    router.push('/login')
+  } else if (command == 'user') {
+    router.push('/user')
+  }
 }
 
 // 面包屑
