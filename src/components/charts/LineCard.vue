@@ -8,6 +8,12 @@ import { ref, onMounted } from 'vue'
 const line = ref()
 
 const LineOption: echarts.EChartsOption = {
+  grid: {
+    left: '15%',   // 与容器左侧的距离
+    right: '15%', // 与容器右侧的距离
+    //top: '5%',   // 与容器顶部的距离
+    //bottom: '5%', // 与容器底部的距离
+  },
   tooltip: {
     trigger: 'axis',
   },

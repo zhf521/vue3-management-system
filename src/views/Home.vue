@@ -3,6 +3,8 @@
     <div class="header">
       <div class="logo">管理系统</div>
       <div class="right">
+        <!-- 消息通知 -->
+        <MessageDropdown></MessageDropdown>
         <!-- 用户名下拉菜单 -->
         <el-dropdown trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
@@ -21,9 +23,7 @@
     </div>
     <el-container class="fillcontain">
       <!-- 侧边显示 -->
-      <el-aside class="aside">
-        <el-button @click="router.push('/dashboard')">首页</el-button>
-      </el-aside>
+      <SideBar></SideBar>
       <!-- 主显示 -->
       <el-main>
         <!-- 面包屑 -->
@@ -43,6 +43,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRouter, RouterView, useRoute } from 'vue-router'
+import MessageDropdown from '../components/MessageDropdown.vue'
+import SideBar from '../components/SideBar.vue'
 const router = useRouter()
 const route = useRoute()
 const username = localStorage.getItem('username')
