@@ -48,7 +48,6 @@ import TodoList from '../components/TodoList.vue'
 import PieCard from '../components/charts/PieCard.vue'
 import LineCard from '../components/charts/LineCard.vue'
 import TabCard from '../components/charts/TabCard.vue'
-
 </script>
 <style scoped lang="scss">
 .el-card .el-card__body {

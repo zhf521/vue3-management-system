@@ -1,6 +1,6 @@
 <template>
-  <el-menu default-active="1" @open="handleOpen" @close="handleClose">
-    <el-menu-item index="1">
+  <el-menu @select="handleSelect" :default-active="route.path">
+    <el-menu-item index="/dashboard">
       <el-icon>
         <HomeFilled></HomeFilled>
       </el-icon>
@@ -17,7 +17,18 @@
         <span>简单表格</span>
       </el-menu-item>
     </el-sub-menu>
-    <el-menu-item index="3">
+    <el-sub-menu index="3">
+      <template #title>
+        <el-icon>
+          <Pointer />
+        </el-icon>
+        <span>拖拽</span>
+      </template>
+      <el-menu-item index="/drag-board">
+        <span>可拖拽看板</span>
+      </el-menu-item>
+    </el-sub-menu>
+    <el-menu-item index="/user">
       <el-icon>
         <UserFilled>
         </UserFilled>
@@ -27,21 +38,22 @@
   </el-menu>
 </template>
 <script setup lang="ts">
-import router from '@/router'
+import { useRoute, useRouter } from 'vue-router'
+
 import {
   HomeFilled,
   List,
   UserFilled,
+  Pointer
 } from '@element-plus/icons-vue'
-const handleOpen = (key: string, keyPath: string[]) => {
-  if (key == '1') {
-    router.push('/dashboard')
-  } else if (key === '3') {
-    router.push('/user')
-  }
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+
+const route = useRoute()
+const router = useRouter()
+
+const handleSelect = (key: string, keyPath: string[]) => {
+  console.log(key)
+
+  router.push(key)
 }
 </script>
 <style lang="scss" scoped>

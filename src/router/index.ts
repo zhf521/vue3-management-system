@@ -4,6 +4,8 @@ import Login from '../views/Login.vue'
 import NotFound from '../views/NotFound.vue'
 import Dashboard from '../views/Dashboard.vue'
 import ComplexTable from '../views/ComplexTable.vue'
+import DragBoard from '../views/DragBoard.vue'
+import User from '../views/User.vue'
 
 const routes = [
   // 重定向
@@ -21,7 +23,6 @@ const routes = [
         path: '/dashboard',
         name: 'dashboard',
         meta: {
-          icon: 'Menu',
           name:'系统首页'
         },
         component:Dashboard
@@ -30,6 +31,22 @@ const routes = [
         path: '/complex-table',
         name: 'ComplexTable',
         component:ComplexTable
+      },
+      {
+        path: '/drag-board',
+        name: 'DragBoard',
+        meta: {
+          name:'可拖拽看板'
+        },
+        component:DragBoard
+      },
+      {
+        path: '/user',
+        name: 'User',
+        meta: {
+          name:'个人中心'
+        },
+        component:User
       }
     ]
   },
