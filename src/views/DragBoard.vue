@@ -52,7 +52,7 @@ const handleDrop = (column: any) => {
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .board {
   display: flex;
 
