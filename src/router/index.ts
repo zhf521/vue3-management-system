@@ -45,7 +45,7 @@ const routes = [
         path: '/drag-list',
         name: 'drag-list',
         meta: {
-          name:'可拖拽表格'
+          name:'可拖拽列表'
         },
         component:DragList
       },
