@@ -27,6 +27,9 @@
       <el-menu-item index="/drag-board">
         <span>可拖拽看板</span>
       </el-menu-item>
+      <el-menu-item index="/drag-list">
+        <span>可拖拽列表</span>
+      </el-menu-item>
     </el-sub-menu>
     <el-menu-item index="/user">
       <el-icon>

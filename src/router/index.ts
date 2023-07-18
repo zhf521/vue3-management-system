@@ -5,6 +5,7 @@ import NotFound from '../views/NotFound.vue'
 import Dashboard from '../views/Dashboard.vue'
 import ComplexTable from '../views/ComplexTable.vue'
 import DragBoard from '../views/DragBoard.vue'
+import DragList from '../views/DragList.vue'
 import User from '../views/User.vue'
 
 const routes = [
@@ -39,6 +40,14 @@ const routes = [
           name:'可拖拽看板'
         },
         component:DragBoard
+      },
+      {
+        path: '/drag-list',
+        name: 'drag-list',
+        meta: {
+          name:'可拖拽表格'
+        },
+        component:DragList
       },
       {
         path: '/user',
