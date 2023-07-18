@@ -7,6 +7,8 @@ import 'element-plus/dist/index.css'
 import *as echarts from 'echarts'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
+// 暗黑模式
+import 'element-plus/theme-chalk/dark/css-vars.css'
 
 const app = createApp(App)
 
