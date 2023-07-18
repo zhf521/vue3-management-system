@@ -29,12 +29,12 @@ const routes = [
       },
       {
         path: '/complex-table',
-        name: 'ComplexTable',
+        name: 'complex-table',
         component:ComplexTable
       },
       {
         path: '/drag-board',
-        name: 'DragBoard',
+        name: 'drag-board',
         meta: {
           name:'可拖拽看板'
         },
@@ -42,7 +42,7 @@ const routes = [
       },
       {
         path: '/user',
-        name: 'User',
+        name: 'user',
         meta: {
           name:'个人中心'
         },
@@ -55,10 +55,10 @@ const routes = [
     name: 'login',
     component: Login
   },
-  {
-    path: '/:pathMatch(.*)*',
-    redirect: '/not-found'
-  },
+  // {
+  //   path: '/:pathMatch(.*)*',
+  //   redirect: '/not-found'
+  // },
   {
     path: '/not-found',
     name: 'not-found',
