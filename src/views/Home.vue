@@ -26,6 +26,8 @@
       <SideBar></SideBar>
       <!-- 主显示 -->
       <el-main>
+        <!-- tab栏 -->
+        <Tabs></Tabs>
         <!-- 面包屑 -->
         <el-breadcrumb style="margin-bottom: 20px;" separator="/">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -45,6 +47,8 @@ import { computed } from 'vue'
 import { useRouter, RouterView, useRoute } from 'vue-router'
 import MessageDropdown from '../components/MessageDropdown.vue'
 import SideBar from '../components/SideBar.vue'
+import Tabs from '../components/Tabs.vue'
+
 const router = useRouter()
 const route = useRoute()
 const username = localStorage.getItem('username')
