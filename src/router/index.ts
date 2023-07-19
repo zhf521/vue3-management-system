@@ -6,13 +6,14 @@ import Dashboard from '../views/Dashboard.vue'
 import ComplexTable from '../views/ComplexTable.vue'
 import DragBoard from '../views/DragBoard.vue'
 import DragList from '../views/DragList.vue'
+import DataScreen from '../views/DataScreen.vue'
 import User from '../views/User.vue'
 
 const routes = [
   // 重定向
   {
     path: '/',
-    redirect:'/dashboard'
+    redirect: '/dashboard'
   },
   {
     path: '/',
@@ -24,40 +25,48 @@ const routes = [
         path: '/dashboard',
         name: 'dashboard',
         meta: {
-          name:'系统首页'
+          name: '系统首页'
         },
-        component:Dashboard
+        component: Dashboard
       },
       {
         path: '/complex-table',
         name: 'complex-table',
-        component:ComplexTable
+        component: ComplexTable
       },
       {
         path: '/drag-board',
         name: 'drag-board',
         meta: {
-          name:'可拖拽看板'
+          name: '可拖拽看板'
         },
-        component:DragBoard
+        component: DragBoard
       },
       {
         path: '/drag-list',
         name: 'drag-list',
         meta: {
-          name:'可拖拽列表'
+          name: '可拖拽列表'
         },
-        component:DragList
+        component: DragList
       },
       {
         path: '/user',
         name: 'user',
         meta: {
-          name:'个人中心'
+          name: '个人中心'
         },
-        component:User
+        component: User
       }
     ]
+  },
+  {
+    path: '/data-screen',
+    name: 'data-screen',
+    meta: {
+      name: '数据大屏'
+    },
+    component: DataScreen
   },
   {
     path: '/login',
@@ -72,7 +81,7 @@ const routes = [
     path: '/not-found',
     name: 'not-found',
     component: NotFound
-  },
+  }
 ]
 
 const router = createRouter({
