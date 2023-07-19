@@ -1,6 +1,7 @@
 <template>
   <div class="top">
     <div class="left">
+      <span></span>
       <span class="lBtn" @click="goHome">首页</span>
     </div>
     <div class="center">
@@ -46,6 +47,9 @@ onBeforeUnmount(() => {
     flex: 1;
     background: url(../../assets/dataScreen-header-left-bg.png) no-repeat;
     background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     .lBtn {
       width: 150px;

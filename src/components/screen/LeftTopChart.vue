@@ -64,7 +64,6 @@ onMounted(() => {
 .box {
   background: url(../../assets/dataScreen-main-lt.png) no-repeat;
   background-size: 100% 100%;
-  margin-top: 10px;
 
   .top {
     margin-left: 20px;

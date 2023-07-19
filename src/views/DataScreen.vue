@@ -17,7 +17,11 @@
           <MapChart class="map"></MapChart>
           <LineChart class="line"></LineChart>
         </div>
-        <div class="right">右</div>
+        <div class="right">
+          <RightTopChart class="right-top"></RightTopChart>
+          <RightCenterChart class="right-center"></RightCenterChart>
+          <RightBottomChart class="right-bottom"></RightBottomChart>
+        </div>
       </div>
     </div>
   </div>
@@ -30,7 +34,9 @@ import LeftCenterChart from '../components/screen/LeftCenterChart.vue'
 import LeftBottomChart from '../components/screen/LeftBottomChart.vue'
 import MapChart from '../components/screen/MapChart.vue'
 import LineChart from '../components/screen/LineChart.vue'
-
+import RightTopChart from '../components/screen/RightTopChart.vue'
+import RightCenterChart from '../components/screen/RightCenterChart.vue'
+import RightBottomChart from '../components/screen/RightBottomChart.vue'
 // 获取数据大屏展示内容盒子的DOM元素
 let screen = ref()
 onMounted(() => {
@@ -66,7 +72,7 @@ window.onresize = () => {
 
     .top {
       width: 100%;
-      height: 40px;
+      height: 75px;
     }
 
     .bottom {
@@ -77,6 +83,19 @@ window.onresize = () => {
         display: flex;
         flex-direction: column;
         margin-left: 40px;
+
+        .right-top {
+          flex: 1.5;
+        }
+
+        .right-center {
+          flex: 1;
+
+        }
+
+        .right-bottom {
+          flex: 1;
+        }
       }
 
       .left {
@@ -86,7 +105,7 @@ window.onresize = () => {
         flex-direction: column;
 
         .left-top {
-          flex: 1.2;
+          flex: 1;
         }
 
         .left-center {
