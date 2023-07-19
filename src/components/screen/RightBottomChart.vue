@@ -61,7 +61,7 @@ onMounted(() => {
 .box {
   width: 100%;
   height: 100%;
-  background: url(../../assets/dataScreen-main-cb.png) no-repeat;
+  background: url(../../assets/dataScreen-main-rb.png) no-repeat;
   background-size: 100% 100%;
   margin-top: 20px;
 

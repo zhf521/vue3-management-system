@@ -24,7 +24,7 @@ onMounted(() => {
     title: {
       //主标题
       text: '景区排行',
-      link: 'http://www.baidu.com',
+
       //标题的位置
       left: '50%',
       //主标题文字样式
@@ -148,14 +148,11 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .box {
-  width: 100%;
-  height: 100%;
-  background: url(../../assets/dataScreen-main-cb.png) no-repeat;
+  background: url(../../assets/dataScreen-main-rt.png) no-repeat;
   background-size: 100% 100%;
-  margin: 20px 0px;
 
   .title {
-    margin-left: 5px;
+    margin-left: 20px;
 
     p {
       color: white;

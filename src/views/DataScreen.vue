@@ -82,10 +82,9 @@ window.onresize = () => {
         flex: 1;
         display: flex;
         flex-direction: column;
-        margin-left: 40px;
 
         .right-top {
-          flex: 1.5;
+          flex: 1;
         }
 
         .right-center {
@@ -100,7 +99,6 @@ window.onresize = () => {
 
       .left {
         flex: 1;
-        height: 1040px;
         display: flex;
         flex-direction: column;
 
