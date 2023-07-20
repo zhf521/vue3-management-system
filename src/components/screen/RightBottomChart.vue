@@ -63,7 +63,6 @@ onMounted(() => {
   height: 100%;
   background: url(../../assets/dataScreen-main-rb.png) no-repeat;
   background-size: 100% 100%;
-  margin-top: 20px;
 
   .title {
     p {

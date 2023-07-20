@@ -121,7 +121,7 @@ window.onresize = () => {
         flex-direction: column;
 
         .map {
-          flex: 4;
+          flex: 2;
         }
 
         .line {
