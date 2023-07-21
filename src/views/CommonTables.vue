@@ -80,33 +80,40 @@
 <script setup lang="ts">
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { reactive, ref, computed } from 'vue'
+import { v4 as uuidv4 } from 'uuid'
 interface User {
+  id: string
   date: string
   name: string
   address: string
 }
 const tableData: User[] = reactive([
   {
+    id: 1,
     date: '2016-05-03',
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
+    id: 2,
     date: '2016-05-02',
     name: 'John',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
+    id: 3,
     date: '2016-05-04',
     name: 'Morgan',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
+    id: 4,
     date: '2016-05-01',
     name: 'Jessy',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
+    id: 5,
     date: '2016-05-11',
     name: 'Jessy',
     address: 'No. 189, Grove St, Los Angeles',
@@ -124,7 +131,11 @@ const handleDelete = (index: number, row: User) => {
     }
   )
     .then(() => {
-      tableData.splice(index, 1)
+      let idx = tableData.findIndex((item) => {
+        return item.id == row.id
+      })
+      // 根据索引删除数据
+      tableData.splice(idx, 1)
       ElMessage({
         type: 'success',
         message: '删除成功',
@@ -140,32 +151,38 @@ const handleDelete = (index: number, row: User) => {
 // 编辑操作
 const editFormVisible = ref(false)
 const editForm = reactive({
-  index: 0,
+  idx: 0,
   date: '',
   name: '',
   address: ''
 })
 const handleEdit = (index: number, row: User) => {
+  let idx = tableData.findIndex((item) => {
+    return item.id == row.id
+  })
   editFormVisible.value = true // 打开编辑对话框
   editForm.date = row.date // 填充表单数据
   editForm.name = row.name
   editForm.address = row.address
-  editForm.index = index
+  editForm.idx = idx
 }
 const saveEdit = () => {
-  tableData[editForm.index].date = editForm.date
-  tableData[editForm.index].name = editForm.name
-  tableData[editForm.index].address = editForm.address
+  tableData[editForm.idx].date = editForm.date
+  tableData[editForm.idx].name = editForm.name
+  tableData[editForm.idx].address = editForm.address
   editFormVisible.value = false
 }
+
 // 新增操作
 const addFormVisible = ref(false)
 const addForm = reactive({
+  id: '',
   date: '',
   name: '',
   address: ''
 })
 const handleAdd = () => {
+  addForm.id = uuidv4()
   addForm.date = '' // 清空日期
   addForm.name = '' // 清空姓名
   addForm.address = '' // 清空地址
@@ -173,6 +190,8 @@ const handleAdd = () => {
 }
 const saveAdd = () => {
   const newUserData = { ...addForm } // 创建新的对象，并复制 addForm 对象的值
+  console.log(newUserData)
+
   tableData.push(newUserData) // 将新对象添加到 tableData 数组中
   addFormVisible.value = false // 关闭新增对话框
 }
