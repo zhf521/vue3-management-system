@@ -3,7 +3,9 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import NotFound from '../views/NotFound.vue'
 import Dashboard from '../views/Dashboard.vue'
-import ComplexTable from '../views/ComplexTable.vue'
+import CommonTables from '../views/CommonTables.vue'
+import ImportExcel from '../views/ImportExcel.vue'
+import ExportExcel from '../views/ExportExcel.vue'
 import DragBoard from '../views/DragBoard.vue'
 import DragList from '../views/DragList.vue'
 import DataScreen from '../views/DataScreen.vue'
@@ -30,9 +32,28 @@ const routes = [
         component: Dashboard
       },
       {
-        path: '/complex-table',
-        name: 'complex-table',
-        component: ComplexTable
+        path: '/common-tables',
+        name: 'common-tables',
+        meta: {
+          name: '常用表格'
+        },
+        component: CommonTables
+      },
+      {
+        path: '/import-excel',
+        name: 'import-excel',
+        meta: {
+          name: '导入Excel'
+        },
+        component: ImportExcel
+      },
+      {
+        path: '/export-excel',
+        name: 'export-excel',
+        meta: {
+          name: '导出Excel'
+        },
+        component: ExportExcel
       },
       {
         path: '/drag-board',
@@ -73,10 +94,10 @@ const routes = [
     name: 'login',
     component: Login
   },
-  // {
-  //   path: '/:pathMatch(.*)*',
-  //   redirect: '/not-found'
-  // },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/not-found'
+  },
   {
     path: '/not-found',
     name: 'not-found',

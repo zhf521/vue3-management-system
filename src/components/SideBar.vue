@@ -1,28 +1,34 @@
 <template>
-  <el-menu @select="handleSelect" :default-active="route.path">
+  <el-menu unique-opened @select="handleSelect" :default-active="route.path">
     <el-menu-item index="/dashboard">
       <el-icon>
         <HomeFilled></HomeFilled>
       </el-icon>
       <span>系统首页</span>
     </el-menu-item>
-    <el-sub-menu index="2">
+    <el-sub-menu index="s1">
       <template #title>
         <el-icon>
           <List></List>
         </el-icon>
-        <span>表格</span>
+        <span>表格相关</span>
       </template>
-      <el-menu-item index="2-1">
-        <span>简单表格</span>
+      <el-menu-item index="/common-tables">
+        <span>常用表格</span>
+      </el-menu-item>
+      <el-menu-item index="/import-excel">
+        <span>导入Excel</span>
+      </el-menu-item>
+      <el-menu-item index="/export-excel">
+        <span>导出Excel</span>
       </el-menu-item>
     </el-sub-menu>
-    <el-sub-menu index="3">
+    <el-sub-menu index="s2">
       <template #title>
         <el-icon>
           <Pointer />
         </el-icon>
-        <span>拖拽</span>
+        <span>拖拽相关</span>
       </template>
       <el-menu-item index="/drag-board">
         <span>可拖拽看板</span>
@@ -32,9 +38,11 @@
       </el-menu-item>
     </el-sub-menu>
     <el-menu-item index="/data-screen">
-        <el-icon><DataAnalysis /></el-icon>
-        <span>数据大屏</span>
-      </el-menu-item>
+      <el-icon>
+        <DataAnalysis />
+      </el-icon>
+      <span>数据大屏</span>
+    </el-menu-item>
     <el-menu-item index="/user">
       <el-icon>
         <UserFilled>
@@ -65,6 +73,6 @@ const handleSelect = (key: string, keyPath: string[]) => {
 </script>
 <style lang="scss" scoped>
 .el-menu {
-  width: 120px;
+  width: 140px;
 }
 </style>

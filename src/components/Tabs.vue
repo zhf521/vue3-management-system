@@ -56,10 +56,9 @@ function clickTab(pane: TabsPaneContext) {
 const removeTab = (name: TabPaneName) => {
   const index = tabsStore.list.findIndex((item) => item.name == name)
   tabsStore.delTabsItem(index)
-  console.log(tabsStore.list[0].path)
-  if (tabsStore.list.length === 0 ) {
-    router.push('/')
-  }else {
+  if (tabsStore.list.length === 0) {
+    router.push('/dashboard')
+  } else {
     const item = tabsStore.list[tabsStore.list.length - 1]
     // 最后一个链接
     router.push(item.path)
