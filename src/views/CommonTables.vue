@@ -140,6 +140,11 @@ const handleDelete = (index: number, row: User) => {
         type: 'success',
         message: '删除成功',
       })
+      // 判断当前页码是否大于总页数，如果是，则将当前页码减1
+      const totalPages = Math.ceil(tableData.length / pageSize.value)
+      if (currentPage.value > totalPages) {
+        currentPage.value--
+      }
     })
     .catch(() => {
       ElMessage({
@@ -151,25 +156,25 @@ const handleDelete = (index: number, row: User) => {
 // 编辑操作
 const editFormVisible = ref(false)
 const editForm = reactive({
-  idx: 0,
+  id: '',
   date: '',
   name: '',
   address: ''
 })
 const handleEdit = (index: number, row: User) => {
-  let idx = tableData.findIndex((item) => {
-    return item.id == row.id
-  })
   editFormVisible.value = true // 打开编辑对话框
+  editForm.id = row.id // 保存编辑的用户ID
   editForm.date = row.date // 填充表单数据
   editForm.name = row.name
   editForm.address = row.address
-  editForm.idx = idx
 }
 const saveEdit = () => {
-  tableData[editForm.idx].date = editForm.date
-  tableData[editForm.idx].name = editForm.name
-  tableData[editForm.idx].address = editForm.address
+  const editedUser = tableData.find((item) => item.id === editForm.id)
+  if (editedUser) {
+    editedUser.date = editForm.date
+    editedUser.name = editForm.name
+    editedUser.address = editForm.address
+  }
   editFormVisible.value = false
 }
 
@@ -199,6 +204,11 @@ const saveAdd = () => {
 const currentPage = ref(1) //当前页码
 const pageSize = ref(5) // 每页显示的记录数
 const currentPageData = computed(() => {
+  const totalPages = Math.ceil(tableData.length / pageSize.value)
+  // 如果当前页码大于总页数，则将当前页码设置为最后一页
+  if (currentPage.value > totalPages) {
+    currentPage.value = totalPages
+  }
   const start = (currentPage.value - 1) * pageSize.value
   const end = start + pageSize.value
   if (start >= tableData.length) {
