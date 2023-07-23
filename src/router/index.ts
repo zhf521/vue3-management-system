@@ -8,6 +8,8 @@ import ImportExcel from '../views/ImportExcel.vue'
 import ExportExcel from '../views/ExportExcel.vue'
 import DragBoard from '../views/DragBoard.vue'
 import DragList from '../views/DragList.vue'
+import RichText from '../views/RichText.vue'
+import MarkDown from '../views/MarkDown.vue'
 import DataScreen from '../views/DataScreen.vue'
 import User from '../views/User.vue'
 
@@ -70,6 +72,22 @@ const routes = [
           name: '可拖拽列表'
         },
         component: DragList
+      },
+      {
+        path: '/rich-text',
+        name: 'rich-text',
+        meta: {
+          name: '富文本'
+        },
+        component: RichText
+      },
+      {
+        path: '/markdown',
+        name: 'markdown',
+        meta: {
+          name: 'MarkDown'
+        },
+        component: MarkDown
       },
       {
         path: '/user',

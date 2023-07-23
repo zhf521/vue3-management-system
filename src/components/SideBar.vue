@@ -37,6 +37,20 @@
         <span>可拖拽列表</span>
       </el-menu-item>
     </el-sub-menu>
+    <el-sub-menu index="s3">
+      <template #title>
+        <el-icon>
+          <Notebook />
+        </el-icon>
+        <span>文章相关</span>
+      </template>
+      <el-menu-item index="/rich-text">
+        <span>富文本</span>
+      </el-menu-item>
+      <el-menu-item index="/markdown">
+        <span>MarkDown</span>
+      </el-menu-item>
+    </el-sub-menu>
     <el-menu-item index="/data-screen">
       <el-icon>
         <DataAnalysis />

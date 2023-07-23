@@ -1,7 +1,7 @@
 <template>
   <div class="fillcontain">
     <div class="header">
-      <div class="logo">管理系统</div>
+      <div class="logo" @click="toHome">管理系统</div>
       <div class="right">
         <el-button icon="FullScreen" @click="fullScreen"></el-button>
         <el-popover placement="bottom-start" title="主题设置" :width="175" trigger="hover">
@@ -132,6 +132,11 @@ let dark = ref(false)
 const changeDark = () => {
   let html = document.documentElement
   dark.value ? html.className = 'dark' : html.className = ''
+}
+
+// logo回家
+const toHome = () => {
+  router.push('/')
 }
 </script>
 <style scoped lang="scss">

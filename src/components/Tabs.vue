@@ -72,5 +72,6 @@ const removeTab = (name: TabPaneName) => {
   position: absolute;
   top: 8px;
   margin-left: -21px;
+  width: 700px;
 }
 </style>
