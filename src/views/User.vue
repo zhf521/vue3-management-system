@@ -30,18 +30,40 @@
           <span>账户编辑</span>
         </div>
       </template>
-      <div></div>
+      <div>
+        <el-form :model="userInfoForm">
+          <el-form-item label="旧密码：">
+            <el-input v-model="userInfoForm.oldPassword" />
+          </el-form-item>
+          <el-form-item label="新密码：">
+            <el-input v-model="userInfoForm.newPassword" />
+          </el-form-item>
+          <el-form-item label="座右铭：">
+            <el-input v-model="userInfoForm.motto" />
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">保存</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
     </el-card>
   </div>
 </template>
 <script lang="ts" setup>
-import { nextTick, ref } from 'vue'
+import { nextTick, ref, reactive } from 'vue'
 import { ElInput } from 'element-plus'
+
+const userInfoForm = reactive({
+  oldPassword: '',
+  newPassword: '',
+  motto: '',
+})
 
 const inputValue = ref('')
 const tags = ref(['魔方', '学习', '数码'])
 const inputVisible = ref(false)
 const InputRef = ref<InstanceType<typeof ElInput>>()
+
 
 const handleClose = (tag: string) => {
   tags.value.splice(tags.value.indexOf(tag), 1)
@@ -60,6 +82,10 @@ const handleInputConfirm = () => {
   }
   inputVisible.value = false
   inputValue.value = ''
+}
+// 保存修改
+const onSubmit = () => {
+  console.log(UserInfoForm.newPassword)
 }
 </script>
 <style scoped lang="scss">
