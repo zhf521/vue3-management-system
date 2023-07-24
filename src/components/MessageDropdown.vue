@@ -15,7 +15,9 @@
         <div class="dropdown-wrapper" v-if="tabName === '通知'">
           <div class="notice-container" @click="handleClickItem(notice)" v-for="(notice, index) in notices" :key="index"
             :class="notice.read ? 'read' : ''">
-            <div class="notice-logo"><img src="notice.logo" alt=""></div>
+            <div class="notice-logo">
+              <img :src="notice.logo" alt="">
+            </div>
             <div class="notice-text">
               <div class="notice-content">
                 {{ notice.content }}
