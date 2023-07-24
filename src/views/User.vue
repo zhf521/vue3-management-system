@@ -85,7 +85,6 @@ const handleInputConfirm = () => {
 }
 // 保存修改
 const onSubmit = () => {
-  console.log(UserInfoForm.newPassword)
 }
 </script>
 <style scoped lang="scss">

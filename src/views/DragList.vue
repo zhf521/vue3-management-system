@@ -28,6 +28,7 @@
 </template>
 
 <script setup lang="ts">
+// @ts-ignore
 import Sortable from 'sortablejs'
 import { onMounted } from 'vue'
 const tableData = [

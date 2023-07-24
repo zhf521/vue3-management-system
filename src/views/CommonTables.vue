@@ -80,6 +80,7 @@
 <script setup lang="ts">
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { reactive, ref, computed } from 'vue'
+// @ts-ignore
 import { v4 as uuidv4 } from 'uuid'
 interface User {
   id: string
@@ -87,6 +88,7 @@ interface User {
   name: string
   address: string
 }
+// @ts-ignore
 const tableData: User[] = reactive([
   {
     id: 1,

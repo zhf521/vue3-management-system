@@ -25,7 +25,7 @@ const goHome = () => {
 }
 // 当前时间
 let time = ref(moment().format('YYYY年MM月DD日 hh:mm:ss'))
-let timer = ref(0)
+let timer: any
 onMounted(() => {
   timer = setInterval(() => {
     time.value = moment().format('YYYY年MM月DD日 hh:mm:ss')

@@ -2,7 +2,7 @@
   <div class="box">
     <div class="title">
       <p>未来七天游客数量趋势图</p>
-      <img src="../../images/dataScreen-title.png" alt="">
+      <img src="../../assets/dataScreen-title.png" alt="">
     </div>
     <div class="charts" ref='line'></div>
   </div>
@@ -90,7 +90,7 @@ onMounted(() => {
 .box {
   width: 100%;
   height: 100%;
-  background: url(../../images/dataScreen-main-cb.png) no-repeat;
+  background: url(../../assets/dataScreen-main-cb.png) no-repeat;
   background-size: 100% 100%;
 
   .title {
