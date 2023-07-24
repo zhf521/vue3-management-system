@@ -8,7 +8,7 @@
       <div class="title">智慧旅游可视化大数据平台</div>
     </div>
     <div class="right">
-      <span class="rBtn">统计报告</span>
+      <span></span>
       <span class="time">{{ time }}</span>
     </div>
   </div>
@@ -83,19 +83,8 @@ onBeforeUnmount(() => {
     background: url(../../assets/dataScreen-header-right-bg.png) no-repeat;
     background-size: cover;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
-    .rBtn {
-      width: 150px;
-      height: 40px;
-      float: left;
-      background: url(../../assets/dataScreen-header-btn-bg-r.png) no-repeat;
-      background-size: 100% 100%;
-      text-align: center;
-      line-height: 40px;
-      color: #29fcff;
-    }
 
     .time {
       color: #29fcff;
