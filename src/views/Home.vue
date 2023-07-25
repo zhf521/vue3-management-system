@@ -65,7 +65,6 @@ import MessageDropdown from '../components/MessageDropdown.vue'
 import SideBar from '../components/SideBar.vue'
 import Tabs from '../components/Tabs.vue'
 import { Sunny, Moon } from '@element-plus/icons-vue/global'
-import { drawerEmits } from 'element-plus'
 
 const router = useRouter()
 const route = useRoute()
